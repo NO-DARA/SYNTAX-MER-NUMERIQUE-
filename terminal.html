@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Terminal SYNTAX</title>
+  <style>
+    body {
+      background-color: #1e1e1e;
+      color: #00ffd5;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #0f0;
+    }
+
+    select, textarea, button {
+      margin-top: 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #00ffd5;
+      background-color: #000;
+      color: #0f0;
+      padding: 10px;
+    }
+
+    textarea {
+      width: 90%;
+      height: 200px;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #00ffd5;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #00ffaa;
+    }
+
+    pre {
+      background: #000;
+      color: #0f0;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: left;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧠 Terminal ꧁𓆩SYNTAX_MER-NUMERIQUE𓆪꧂</h1>
+
+  <label for="lang">Choisir le langage :</label><br>
+  <select id="lang">
+    <option value="python3">🐍 Python</option>
+    <option value="c">🔵 C</option>
+    <option value="cpp">🟣 C++</option>
+    <option value="nodejs">🟨 JavaScript (Node.js)</option>
+  </select><br>
+
+  <textarea id="code" placeholder="Écris ton code ici...">print("Hello SYNTAX")</textarea><br>
+
+  <button onclick="runCode()">▶️ Exécuter le code</button>
+
+  <pre id="output">🧾 Résultat...</pre>
+
+  <script>
+    async function runCode() {
+      const code = document.getElementById("code").value;
+      let language = document.getElementById("lang").value;
+
+      const output = document.getElementById("output");
+      output.textContent = "⏳ En cours...";
+
+      try {
+        const response = await fetch("https://api.jdoodle.com/v1/execute", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            clientId: "e0e7f0dbe0f26d36a7a65a16a127c2ba",
+            clientSecret: "fc9adf7b71e76a8194da78134fbb2439de40dac0064e5464374fc9d352fe242b",
+            script: code,
+            language: language,
+            versionIndex: "0"
+          })
+        });
+
+        const result = await response.json();
+        output.textContent = result.output || "✅ Aucun résultat.";
+      } catch (err) {
+        output.textContent = "❌ Erreur lors de l'exécution : " + err.message;
+      }
+    }
+  </script>
+</body>
+</html>
