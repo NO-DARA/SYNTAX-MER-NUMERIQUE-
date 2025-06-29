@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>꧁𓆩SYNTAX_MER-NUMERIQUE𓆪꧂</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: monospace;
+      color: #00ffd5;
+      background: url('fond.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader h1 {
+      color: #00ffd5;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .spinner {
+      border: 6px solid #1e1e1e;
+      border-top: 6px solid #00ffd5;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      display: none;
+    }
+
+    h1 {
+      font-size: 2rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 25px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      color: #00ffd5;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #00ffd5;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #00ffaa;
+    }
+
+    .whatsapp {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .whatsapp:hover {
+      background-color: #1DA851;
+    }
+
+    .whatsapp img {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔊 Audio d’introduction -->
+  <audio id="intro-audio" autoplay>
+    <source src="intro.mp3" type="audio/mpeg">
+    Ton navigateur ne supporte pas l’audio HTML5.
+  </audio>
+
+  <!-- ⏳ Écran de chargement -->
+  <div class="loader" id="loader">
+    <h1>Chargement de SYNTAX_MER-NUMERIQUE...</h1>
+    <div class="spinner"></div>
+  </div>
+
+  <!-- 👑 Contenu principal -->
+  <div class="content" id="main-content">
+    <h1>꧁𓆩𝙎𝙔𝙉𝙏𝘼𝙓_<span style="color:#0f0;">MER-NUMERIQUE</span>𓆪꧂</h1>
+    <div class="button-group">
+      <button onclick="window.location.href='terminal.html'">🎮 Terminal</button>
+      <button onclick="window.location.href='aide.html'">📜 Aide SYNTAX</button>
+      <button onclick="window.location.href='qr.html'">📲 QR Code</button>
+      <button onclick="window.location.href='crypto.html'">💰 Crypto</button>
+      <button class="whatsapp" onclick="window.open('https://chat.whatsapp.com/I3d76sZYoHqEcG4yiZ0ErT?mode=ac_c')">
+        <img src="https://img.icons8.com/color/24/000000/whatsapp.png"> Groupe WhatsApp
+      </button>
+      <button class="whatsapp" onclick="window.open('https://whatsapp.com/channel/0029Vb6cmbu7oQhToYwka63b')">
+        <img src="https://img.icons8.com/color/24/000000/whatsapp.png"> Chaîne WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <script>
+    window.onload = function () {
+      const audio = document.getElementById("intro-audio");
+      if (audio) {
+        audio.play().catch(() => {
+          console.log("Lecture auto bloquée");
+        });
+      }
+
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("main-content").style.display = "block";
+      }, 2500);
+    };
+  </script>
+</body>
+</html>
