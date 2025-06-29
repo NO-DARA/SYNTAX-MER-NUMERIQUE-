@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code - SYNTAX</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+  <style>
+    body {
+      background: #1e1e1e;
+      color: #00ffd5;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 2px solid #00ffd5;
+      background: #000;
+      color: #0f0;
+      margin: 10px 0;
+    }
+
+    #qrcode {
+      margin-top: 20px;
+    }
+
+    .back {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00ffd5;
+      color: #000;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      background-color: #00ffaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📲 Générateur de QR Code - SYNTAX</h1>
+
+  <input type="text" id="text" placeholder="Entre un lien, un texte, un numéro...">
+  <br>
+  <button onclick="generateQRCode()">🎯 Générer QR</button>
+
+  <div id="qrcode"></div>
+
+  <a class="back" href="index.html">⬅️ Retour à l'accueil</a>
+
+  <script>
+    function generateQRCode() {
+      const container = document.getElementById("qrcode");
+      container.innerHTML = ""; // Supprime l'ancien QR
+      const text = document.getElementById("text").value;
+
+      new QRCode(container, {
+        text: text,
+        width: 200,
+        height: 200,
+        colorDark : "#00ffd5",
+        colorLight : "#1e1e1e",
+        correctLevel : QRCode.CorrectLevel.H
+      });
+    }
+  </script>
+
+</body>
+</html>
